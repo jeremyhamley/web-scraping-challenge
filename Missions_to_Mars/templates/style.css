@@ -1,0 +1,19 @@
+.centerhead
+    {
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+p
+    {
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+.background{background-color:rgb(0, 0, 0)}
+
+.foot{background-color:rgb(85, 99, 119)}
+
+
+

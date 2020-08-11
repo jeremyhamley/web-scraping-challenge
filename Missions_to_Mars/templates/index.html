@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,8 +14,8 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars Data</a></p>
     </div>
       
-    <!-- mars data -->
-    <div class="row">
+    <!<mars data -->
+<!-- <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <h3>Mars</h3>
         <p>{{mars.news_date}}</p>
@@ -32,4 +32,204 @@
   </div>
 
 </body>
+</html> --> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Up to the Minute Mars</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+​
+
+<body style="background-color: rgb(44, 42, 42);">
+  <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top foot">
+    <h5 class="navbar-brand">Up to the Minute Mars</h5>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+    </button>
+
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown ml-auto">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plots</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="WebVisualizations/max_temp.html" class="dropdown-item">vs Max Temperature</a>
+                        <a href="WebVisualizations/humid.html" class="dropdown-item"> vs Humidity</a>
+                        <a href="WebVisualizations/cloud.html" class="dropdown-item">vs Cloudiness</a>
+                        <a href="WebVisualizations/wind.html" class="dropdown-item">vs Wind Speed</a>
+                    </div>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a href="WebVisualizations/compar.html" class="nav-link">Comparison</a>
+                </li>
+                <li class="nav-item ml-auto">
+                    <a href="WebVisualizations/data.html" class="nav-link">Data</a>
+                </li>
+            </ul>  "background-color: rgb(63, 66, 70);
+        </div> -->
+  </nav>
+
+  <div class="container-fluid background" style="margin-top: 50px;">
+    <div class="row m-1">
+      <div class="col m-3" style="color: rgb(230, 225, 220);">
+        <h1>Up to the Minute Mars</h1>
+        <h5>
+          <a class="btn btn-primary btn-lg"  href="/scrape" role="button">refresh Mars Data</a>
+        </h5>
+      </div>
+    </div>
+
+    <div class="container-fluid m-2">
+      <div class="row"> ​
+        <div class="col-sm-12 col-md-8">
+          <div class="card" style="background-color: rgb(236, 232, 229);">
+            <div class="card-body">
+              <h4 class="card-title">BREAKING NEWS</h4>
+              <h5>{{mars.news_date}}</h5>
+              <h3>{{mars.news_title}}</h3><br>
+              <h5>{{mars.news_para}}</h5>
+            </div>
+          </div>
+          <br>
+
+          <div class="card" style="background-color: rgb(236, 232, 229);">
+            <div class="card-body">
+              <h4 class="card-title">Current conditions on Mars</h4><br>
+              <h5>{{mars.weather}}</h5>
+            </div>
+          </div>
+          <br>
+
+          <div class="card">
+            <div class="card-body"style="background-color: black;">
+              <h5 class="card-title" style="color: rgb(240, 236, 230);">NASA's Jet Propulsion Laboratory featured image</h5>
+              <h2 style="color: rgb(240, 236, 230);">{{mars.featured_img_title}}</h2><br>
+              <p style="color: rgb(240, 236, 230);">{{mars.featured_image_cap}}</p>
+              <center><img src={{mars.featured_image_url}} class="img-fluid" alt="NASA featured image"></center>
+            </div>
+          </div>
+          <br>
+
+          <!-- MARS FACTS -->
+          <div class="card mb-2" style="margin: 7px;">
+            <div class="table-responsive">
+              <center><div class="table">
+                {{mars.facts_1 | safe}}
+              </div></center>
+            </div>
+          </div><br>
+
+          <div class="card mb-2" style="margin: 7px;">
+            <div class="table-responsive">
+              <center><div class="table">
+                {{mars.facts_2 | safe}}
+              </div></center>
+            </div>
+          </div><br>
+
+      
+
+        </div>
+
+        <!-- HEMISPHERE COLUMN -->
+
+        <div class="col-sm-12 col-md-4 ml-auto">
+          <aside class="sidebar">
+            <div class="card mb-2">
+              <div class="card-body" style="background-color: black;">
+                <center>
+                  <h3 class="card-title" style="color: rgb(240, 236, 230);">Mars Hemispheres</h3>
+                </center>
+              </div>
+            </div>
+          </aside>
+
+          <aside class="sidebar">
+            <div class="card mb-2">
+              <div class="card-body background" style="background-color: black;">
+                <center>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[0]['title']}}</h5>
+                </center>
+                <center><img src={{mars.hemi_imgs[0]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[0]['title']}}>
+                </center>
+              </div>
+            </div>
+          </aside>
+
+          <aside class="sidebar">
+            <div class="card mb-2">
+              <div class="card-body background" style="background-color: black;">
+                <center>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[1]['title']}}</h5>
+                </center>
+                <center><img src={{mars.hemi_imgs[1]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[1]['title']}}>
+                </center>
+              </div>
+            </div>
+          </aside>
+
+          <aside class="sidebar">
+            <div class="card mb-2">
+              <div class="card-body background" style="background-color: black;">
+                <center>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[2]['title']}}</h5>
+                </center>
+                <center><img src={{mars.hemi_imgs[2]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[2]['title']}}>
+                </center>
+              </div>
+            </div>
+          </aside>
+
+          <aside class="sidebar">
+            <div class="card mb-2">
+              <div class="card-body background" style="background-color: black;">
+                <center>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[3]['title']}}</h5>
+                </center>
+                <center><img src={{mars.hemi_imgs[3]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[3]['title']}}>
+                </center>
+              </div>
+            </div>
+          </aside>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div>
+      <div class="container-fluid foot" style="margin-top: 20px;">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+
+</body>
+​
+
 </html>

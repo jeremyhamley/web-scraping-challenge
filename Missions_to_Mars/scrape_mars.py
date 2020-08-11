@@ -46,15 +46,21 @@ def scrape():
     img_title = soup.find('h1').text
 
     browser.click_link_by_partial_text('FULL IMAGE')
-    time.sleep(3)
+    time.sleep(1)
+    browser.click_link_by_partial_text('more info')
+    time.sleep(1)
+
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
-    featured_image_div = soup.find('div', class_='fancybox-inner fancybox-skin fancybox-dark-skin fancybox-dark-skin-open')
+
+    featured_image_fig = soup.find('figure', class_='lede')
     #store image url
-    featured_image_url = (f"https://www.jpl.nasa.gov{featured_image_div.img['src']}")
+    featured_image_url = (f"https://www.jpl.nasa.gov{featured_image_fig.img['src']}")
+    featured_image_cap = featured_image_fig.img['alt']
     #add to dict
     mars_data['featured_img_title'] = img_title
     mars_data['featured_image_url'] = featured_image_url
+    mars_data['featured_image_cap'] = featured_image_cap
 
 
     #Mars weather
@@ -83,12 +89,12 @@ def scrape():
     facts_db.rename(columns={0:'Mars Planet Profile'}, inplace=True)
     facts_db.rename(columns={1:''}, inplace=True)
     facts_db.set_index('Mars Planet Profile', inplace=True)
-    fact_dict = facts_db.to_dict()
+    fact_dict = facts_db.to_html()
 
     #store facts_2
     facts2_db = tables[1]
     facts2_db.set_index('Mars - Earth Comparison', inplace=True)
-    fact2_dict = facts2_db.to_dict()
+    fact2_dict = facts2_db.to_html()
 
     #add to dict
     mars_data['facts_1'] = fact_dict
