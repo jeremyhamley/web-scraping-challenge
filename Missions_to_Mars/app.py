@@ -9,6 +9,7 @@ app = Flask(__name__)
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 
+
 @app.route("/")
 def index():
     mars = mongo.db.mars.find_one()

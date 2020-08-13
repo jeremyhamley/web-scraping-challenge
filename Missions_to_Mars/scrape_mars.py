@@ -27,6 +27,7 @@ def scrape():
 
     #store news data
     news = soup.find('li', class_='slide')
+    news_img = news.find('div', class_='list_image').img['src']
     news_date = news.find('div', class_='list_date').text
     news_title = news.find('h3').text
     news_para = news.find('div', class_='article_teaser_body').text
@@ -34,6 +35,8 @@ def scrape():
     mars_data['news_date'] = news_date
     mars_data['news_title'] = news_title
     mars_data['news_para'] = news_para
+    mars_data['news_img'] = (f"https://mars.nasa.gov{news_img}")
+
 
     #featured image
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -108,12 +111,13 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
 
-    hemi_imgs = []
+    
     hemi_names = soup.find_all('h3')
+    
     #store hemisphere data
     for name in hemi_names:
         browser.click_link_by_partial_text(name.text)
-        time.sleep(3)
+        time.sleep(2)
         html = browser.html
         soup = BeautifulSoup(html, 'lxml')
     
@@ -121,12 +125,15 @@ def scrape():
         url_a = url_li.find('a')
         url_pic = url_a.get('href')
 
-        hemi_imgs.append({'title': name.text, 'img_url': url_pic})
+        name = name.text
+        name_db = name.replace(' ','_')
+        mars_data[name_db] = name
+        mars_data[f'{name_db}_url'] = url_pic
+
+
         browser.back()
         time.sleep(1)
 
-    #add to dict
-    mars_data['hemi_imgs'] = hemi_imgs
 
     browser.quit()   
 

@@ -1,42 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mars</title>
-</head>
-
-<body>
-  <div clas="container">
-    <div class="jumbotron text-center">
-      <h1>Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars Data</a></p>
-    </div>
-      
-    <!<mars data -->
-<!-- <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h3>Mars</h3>
-        <p>{{mars.news_date}}</p>
-        <p>{{mars.news_title}}</p>
-        <p>{{mars.news_para}}</p>
-        <p>{{mars.featured_img_title}}</p>
-        <p>{{mars.featured_image_url}}</p>
-        <p>{{mars.weather}}</p>
-        <p>{{mars.facts_1}}</p>
-        <p>{{mars.facts_2}}</p>
-        <p>{{mars.hemi_imgs}}</p>
-      </div>
-    </div>
-  </div>
-
-</body>
-</html> --> -->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -55,27 +16,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <!-- <span class="navbar-toggler-icon"></span> -->
     </button>
-
-    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown ml-auto">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plots</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a href="WebVisualizations/max_temp.html" class="dropdown-item">vs Max Temperature</a>
-                        <a href="WebVisualizations/humid.html" class="dropdown-item"> vs Humidity</a>
-                        <a href="WebVisualizations/cloud.html" class="dropdown-item">vs Cloudiness</a>
-                        <a href="WebVisualizations/wind.html" class="dropdown-item">vs Wind Speed</a>
-                    </div>
-                </li>
-                <li class="nav-item ml-auto">
-                    <a href="WebVisualizations/compar.html" class="nav-link">Comparison</a>
-                </li>
-                <li class="nav-item ml-auto">
-                    <a href="WebVisualizations/data.html" class="nav-link">Data</a>
-                </li>
-            </ul>  "background-color: rgb(63, 66, 70);
-        </div> -->
   </nav>
 
   <div class="container-fluid background" style="margin-top: 50px;">
@@ -83,7 +23,7 @@
       <div class="col m-3" style="color: rgb(230, 225, 220);">
         <h1>Up to the Minute Mars</h1>
         <h5>
-          <a class="btn btn-primary btn-lg"  href="/scrape" role="button">refresh Mars Data</a>
+          <a class="btn btn-secondary btn-lg" href="/scrape" role="button">refresh Mars Data</a>
         </h5>
       </div>
     </div>
@@ -95,6 +35,7 @@
             <div class="card-body">
               <h4 class="card-title">BREAKING NEWS</h4>
               <h5>{{mars.news_date}}</h5>
+              <img src={{mars.news_img}} class="img-fluid" alt="{{mars.news_title}}"><br>
               <h3>{{mars.news_title}}</h3><br>
               <h5>{{mars.news_para}}</h5>
             </div>
@@ -110,33 +51,54 @@
           <br>
 
           <div class="card">
-            <div class="card-body"style="background-color: black;">
-              <h5 class="card-title" style="color: rgb(240, 236, 230);">NASA's Jet Propulsion Laboratory featured image</h5>
-              <h2 style="color: rgb(240, 236, 230);">{{mars.featured_img_title}}</h2><br>
-              <p style="color: rgb(240, 236, 230);">{{mars.featured_image_cap}}</p>
+            <div class="card-body" style="background-color: black;">
+              <h4 class="card-title" style="color: rgb(240, 236, 230);">NASA's Jet Propulsion Laboratory featured image
+              </h4>
+              <h1 style="color: rgb(240, 236, 230);">{{mars.featured_img_title}}</h1><br>
+              <h3 style="color: rgb(240, 236, 230);">{{mars.featured_image_cap}}</h3>
               <center><img src={{mars.featured_image_url}} class="img-fluid" alt="NASA featured image"></center>
             </div>
           </div>
           <br>
 
           <!-- MARS FACTS -->
-          <div class="card mb-2" style="margin: 7px;">
-            <div class="table-responsive">
-              <center><div class="table">
-                {{mars.facts_1 | safe}}
-              </div></center>
+          <div class="card mb-2">
+            <div class="card-body" style="background-color: black;">
+              <center>
+                <h1 class="card-title" style="color: rgb(240, 236, 230);">Mars Planet Profile</h1>
+              </center>
+            </div>
+          </div>
+
+          <div class="card mb-2" style="margin: 7px; background-color: darkgrey;">
+            <div class=" table table-responsive table-bordered">
+              <center>
+                <div class="table">
+                  {{mars.facts_1 | safe}}
+                </div>
+              </center>
             </div>
           </div><br>
 
-          <div class="card mb-2" style="margin: 7px;">
-            <div class="table-responsive">
-              <center><div class="table">
-                {{mars.facts_2 | safe}}
-              </div></center>
+          <div class="card mb-2">
+            <div class="card-body" style="background-color: black;">
+              <center>
+                <h1 class="card-title" style="color: rgb(240, 236, 230);">Mars - Earth Comparison </h1>
+              </center>
+            </div>
+          </div>
+
+          <div class="card mb-2" style="margin: 7px; background-color: darkgrey;">
+            <div class="table-responsive table-bordered">
+              <center>
+                <div class="table">
+                  {{mars.facts_2 | safe}}
+                </div>
+              </center>
             </div>
           </div><br>
 
-      
+
 
         </div>
 
@@ -157,21 +119,9 @@
             <div class="card mb-2">
               <div class="card-body background" style="background-color: black;">
                 <center>
-                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[0]['title']}}</h5>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.Valles_Marineris_Hemisphere_Enhanced}}</h5>
                 </center>
-                <center><img src={{mars.hemi_imgs[0]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[0]['title']}}>
-                </center>
-              </div>
-            </div>
-          </aside>
-
-          <aside class="sidebar">
-            <div class="card mb-2">
-              <div class="card-body background" style="background-color: black;">
-                <center>
-                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[1]['title']}}</h5>
-                </center>
-                <center><img src={{mars.hemi_imgs[1]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[1]['title']}}>
+                <center><img src={{mars.Valles_Marineris_Hemisphere_Enhanced_url}} class="img-fluid" alt={{mars.Valles_Marineris_Hemisphere_Enhanced}}>
                 </center>
               </div>
             </div>
@@ -181,9 +131,9 @@
             <div class="card mb-2">
               <div class="card-body background" style="background-color: black;">
                 <center>
-                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[2]['title']}}</h5>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.Syrtis_Major_Hemisphere_Enhanced}}</h5>
                 </center>
-                <center><img src={{mars.hemi_imgs[2]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[2]['title']}}>
+                <center><img src={{mars.Syrtis_Major_Hemisphere_Enhanced_url}} class="img-fluid" alt={{mars.Syrtis_Major_Hemisphere_Enhanced}}>
                 </center>
               </div>
             </div>
@@ -193,23 +143,39 @@
             <div class="card mb-2">
               <div class="card-body background" style="background-color: black;">
                 <center>
-                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.hemi_imgs[3]['title']}}</h5>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.Schiaparelli_Hemisphere_Enhanced}}</h5>
                 </center>
-                <center><img src={{mars.hemi_imgs[3]['img_url']}} class="img-fluid" alt={{mars.hemi_imgs[3]['title']}}>
+                <center><img src={{mars.Schiaparelli_Hemisphere_Enhanced_url}} class="img-fluid" alt={{mars.Schiaparelli_Hemisphere_Enhanced}}>
                 </center>
               </div>
             </div>
           </aside>
 
+          <aside class="sidebar">
+            <div class="card mb-2">
+              <div class="card-body background" style="background-color: black;">
+                <center>
+                  <h5 class="card-title" style="color: rgb(240, 236, 230);">{{mars.Cerberus_Hemisphere_Enhanced}}</h5>
+                </center>
+                <center><img src={{mars.Cerberus_Hemisphere_Enhanced_url}} class="img-fluid"
+                    alt={{mars.Cerberus_Hemisphere_Enhanced}}>
+                </center>
+              </div>
+            </div>
+          </aside>
 
         </div>
+
       </div>
     </div>
 
 
 
     <div>
-      <div class="container-fluid foot" style="margin-top: 20px;">
+      <div class="container-fluid foot" style="margin-top: 20px; color: rgb(83, 82, 82);">
+        MARS mars sram SRAM   SraMMarS MarssraM MARS mars sram SRAM   SraMMarS MarssraM   MARS mars sram SRAM   SraMMarS MarssraM
+        MARS mars sram SRAM   SraMMarS MarssraM MARS mars sram SRAM   SraMMarS MarssraM   MARS mars sram SRAM   SraMMarS MarssraM
+        MARS mars sram SRAM   SraMMarS MarssraM MARS mars sram SRAM   SraMMarS MarssraM   MARS mars sram SRAM   SraMMarS MarssraM
         <div class="row">
 
         </div>
